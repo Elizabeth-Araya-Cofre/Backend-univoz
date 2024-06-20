@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import dbConnection  from './database/connection.js'
 import UsuarioController from "./controller/UsuarioController.js";
+import PublicacionesController from "./controller/PublicacionesController.js"
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,9 @@ app.use(express.json());
 
 
 app.use('/usuario',UsuarioController)
+app.use('/publicacion', PublicacionesController)
+
+
 
 
 app.listen(process.env.PORT, () => {
