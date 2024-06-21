@@ -1,9 +1,9 @@
-import express, { request, response } from "express";
+import express from "express";
 import { Usuario } from "../models/UsuarioModel.js";
 import { Publicacion } from "../models/PublicacionesModel.js";
 
 const router =express.Router();
-
+//ruta para crear publicación
 router.post('/crear-publicacion', async (request, response)=> {
     try{
         if ( !request.body.titulo || !request.body.descripcion || !request.body.tags){
@@ -37,7 +37,7 @@ router.post('/crear-publicacion', async (request, response)=> {
 
 
 }) 
-
+// ruta para obtener lista de publicaciones
 router.get("/listar-publicaciones", async(request, response ) =>{
     try{
         const publicaciones = await Publicacion.find({}).populate("usuario", "usuario") // busca todas las publicaciones con el find  con el populate voy a traer todos los usuarios de la coleccion de usuario por medio de la referencia la colección de usuario y el campo usuario

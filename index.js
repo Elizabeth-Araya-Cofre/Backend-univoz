@@ -10,7 +10,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 
-
+//definimos las rutas de la aplicación
 app.use('/usuario',UsuarioController)
 app.use('/publicacion', PublicacionesController)
 
