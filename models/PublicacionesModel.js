@@ -16,7 +16,7 @@ const PublicacionSchema = new mongoose.Schema({
 
     usuario:{
      type: mongoose.Schema.Types.ObjectId,
-     ref: 'Usuario',
+     ref: 'Usuario', // este usuario es el mismo del model de usuario esta publicacion va a referenciar al otro usuario por su id 
      require: true
    },
    titulo:{

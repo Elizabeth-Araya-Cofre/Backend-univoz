@@ -6,14 +6,14 @@ const router =express.Router();
 
 router.post('/crear-publicacion', async (request, response)=> {
     try{
-        // if (!request.body.usuario || !request.body.titulo || !request.body.descripcion || !request.body.tags){
-        //     return response.status(400).send({
-        //         message: 'Todos los campos son obligatorios'
-        //     })
-        // }
+        if ( !request.body.titulo || !request.body.descripcion || !request.body.tags){
+            return response.status(400).send({
+                message: 'Todos los campos son obligatorios'
+            })
+        }
 
         const usuario = await Usuario.findOne({
-            usuario: "eli"
+            usuario: "ada"
 
         })
         console.table(usuario)
@@ -40,7 +40,7 @@ router.post('/crear-publicacion', async (request, response)=> {
 
 router.get("/listar-publicaciones", async(request, response ) =>{
     try{
-        const publicaciones = await Publicacion.find({}).populate("usuario", "usuario")
+        const publicaciones = await Publicacion.find({}).populate("usuario", "usuario") // busca todas las publicaciones con el find  con el populate voy a traer todos los usuarios de la coleccion de usuario por medio de la referencia la colección de usuario y el campo usuario
         return response.status(200).send(publicaciones)
 
     }catch(error){
